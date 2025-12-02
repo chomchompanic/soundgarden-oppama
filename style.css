@@ -312,6 +312,8 @@ a:hover {
 .info-value {
     font-weight: 400;
     color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .hero-campaign {
