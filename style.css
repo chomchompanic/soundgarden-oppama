@@ -316,6 +316,12 @@ a:hover {
     line-height: 1.5;
 }
 
+.fee-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
 .hero-campaign {
     background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
     padding: 20px;
