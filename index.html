@@ -225,145 +225,13 @@
         </div>
     </section>
 
-    <!-- 入居可能な部屋 -->
+    <!-- 入居可能な部屋（microCMS版） -->
     <section class="section section-gray" id="rooms">
         <div class="container">
-            <h2 class="section-title">入居ができるお部屋</h2>
-            <div class="rooms-header">
-                <p class="rooms-count">
-                    <span id="displayedRooms">1</span> / <span id="totalRooms">5</span> 室
-                </p>
-                <div class="rooms-filter">
-                    <button class="filter-btn active" data-filter="vacant">空室のみ表示</button>
-                    <button class="filter-btn" data-filter="all">全部屋表示</button>
-                </div>
-            </div>
-            <div class="rooms-grid" id="roomsGrid">
-                <!-- 204号室（空室） -->
-                <div class="room-card" data-status="vacant">
-                    <div class="room-status vacant">空室</div>
-                    <img src="images/room-03.jpg" alt="204号室" class="room-image">
-                    <h3 class="room-number">204号室</h3>
-                    <div class="room-details">
-                        <div class="room-detail-item">
-                            <span class="detail-label">家賃</span>
-                            <span class="detail-value">23,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">共益費</span>
-                            <span class="detail-value">12,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">専有面積</span>
-                            <span class="detail-value">7.3㎡（4畳）</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">設備</span>
-                            <span class="detail-value">デスク、椅子つき</span>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="section-title">空室情報</h2>
 
-                <!-- 201号室（満室） -->
-                <div class="room-card" data-status="occupied">
-                    <div class="room-status occupied">満室</div>
-                    <img src="images/room-01.jpg" alt="201号室" class="room-image">
-                    <h3 class="room-number">201号室</h3>
-                    <div class="room-details">
-                        <div class="room-detail-item">
-                            <span class="detail-label">家賃</span>
-                            <span class="detail-value">29,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">共益費</span>
-                            <span class="detail-value">12,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">専有面積</span>
-                            <span class="detail-value">15.5㎡（8.5畳）</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">設備</span>
-                            <span class="detail-value">ベッド、デスク、椅子</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 202号室（満室） -->
-                <div class="room-card" data-status="occupied">
-                    <div class="room-status occupied">満室</div>
-                    <img src="images/room-05.jpg" alt="202号室" class="room-image">
-                    <h3 class="room-number">202号室</h3>
-                    <div class="room-details">
-                        <div class="room-detail-item">
-                            <span class="detail-label">家賃</span>
-                            <span class="detail-value">29,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">共益費</span>
-                            <span class="detail-value">12,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">専有面積</span>
-                            <span class="detail-value">15.5㎡（8.5畳）</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">設備</span>
-                            <span class="detail-value">ベッド、デスク、椅子</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 203号室（満室） -->
-                <div class="room-card" data-status="occupied">
-                    <div class="room-status occupied">満室</div>
-                    <img src="images/room-02.jpg" alt="203号室" class="room-image">
-                    <h3 class="room-number">203号室</h3>
-                    <div class="room-details">
-                        <div class="room-detail-item">
-                            <span class="detail-label">家賃</span>
-                            <span class="detail-value">29,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">共益費</span>
-                            <span class="detail-value">12,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">専有面積</span>
-                            <span class="detail-value">16.4㎡（9畳）</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">設備</span>
-                            <span class="detail-value">ベッド、デスク、椅子</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 101号室（満室） -->
-                <div class="room-card" data-status="occupied">
-                    <div class="room-status occupied">満室</div>
-                    <img src="images/room-04.jpg" alt="101号室" class="room-image">
-                    <h3 class="room-number">101号室</h3>
-                    <div class="room-details">
-                        <div class="room-detail-item">
-                            <span class="detail-label">家賃</span>
-                            <span class="detail-value">27,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">共益費</span>
-                            <span class="detail-value">12,000円</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">専有面積</span>
-                            <span class="detail-value">16.4㎡（9畳）</span>
-                        </div>
-                        <div class="room-detail-item">
-                            <span class="detail-label">設備</span>
-                            <span class="detail-value">ベッド、デスク、椅子</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- microCMS から取得した空室がここに表示されます -->
+            <div id="rooms-container"></div>
         </div>
     </section>
 
@@ -676,6 +544,10 @@
     </div>
 
     <script src="main.js"></script>
+
+    <!-- microCMS 空室管理システム -->
+    <link rel="stylesheet" href="rooms-microcms.css">
+    <script src="rooms-microcms.js"></script>
 </body>
 </html>
 
