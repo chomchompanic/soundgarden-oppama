@@ -19,8 +19,54 @@
 // ========================================
 // 設定（ここを変更してください）
 // ========================================
-const MICROCMS_API_ENDPOINT = 'https://YOUR_SERVICE.microcms.io/api/v1/rooms';
-const MICROCMS_API_KEY = 'YOUR_READ_ONLY_API_KEY';
+const MICROCMS_API_ENDPOINT = 'https://soundgarden-oppama.microcms.io/api/v1/rooms';
+const MICROCMS_API_KEY = 'A2lal2Rls9z9nWtuETJKJBP4GCdTahQr0AXl';
+
+// ========================================
+// 部屋の詳細情報（静的データ）
+// ========================================
+const ROOM_DETAILS = {
+    '204号室': {
+        rent: 23000,
+        utilities: 12000,
+        deposit: 30000,
+        floorSize: '7.3㎡（4畳）',
+        furniture: 'デスク、椅子',
+        image: 'images/room-03.jpg'
+    },
+    '201号室': {
+        rent: 29000,
+        utilities: 12000,
+        deposit: 30000,
+        floorSize: '15.5㎡（8.5畳）',
+        furniture: 'ベッド、デスク、椅子',
+        image: 'images/room-01.jpg'
+    },
+    '202号室': {
+        rent: 29000,
+        utilities: 12000,
+        deposit: 30000,
+        floorSize: '15.5㎡（8.5畳）',
+        furniture: 'ベッド、デスク、椅子',
+        image: 'images/room-05.jpg'
+    },
+    '203号室': {
+        rent: 29000,
+        utilities: 12000,
+        deposit: 30000,
+        floorSize: '16.4㎡（9畳）',
+        furniture: 'ベッド、デスク、椅子',
+        image: 'images/room-02.jpg'
+    },
+    '101号室': {
+        rent: 27000,
+        utilities: 12000,
+        deposit: 30000,
+        floorSize: '16.4㎡（9畳）',
+        furniture: 'ベッド、デスク、椅子',
+        image: 'images/room-04.jpg'
+    }
+};
 
 // ========================================
 // microCMS からデータを取得
@@ -56,8 +102,13 @@ function filterAvailableRooms(rooms) {
 // 部屋カードのHTML生成
 // ========================================
 function createRoomCard(room) {
-    const monthlyTotal = (room.rent || 0) + (room.utilities || 0);
-    const imageUrl = room.image?.url || 'images/room-placeholder.jpg';
+    // microCMSの部屋番号で静的データを取得
+    const details = ROOM_DETAILS[room.roomNumber] || {};
+
+    const rent = details.rent || 0;
+    const utilities = details.utilities || 0;
+    const monthlyTotal = rent + utilities;
+    const imageUrl = details.image || 'images/room-placeholder.jpg';
 
     return `
         <div class="room-card-microcms">
@@ -65,30 +116,30 @@ function createRoomCard(room) {
             <img src="${imageUrl}" alt="${room.roomNumber}" class="room-card-image">
             <div class="room-card-content">
                 <h3 class="room-card-title">${room.roomNumber}</h3>
-                <p class="room-card-size">${room.floorSize || '-'}</p>
+                <p class="room-card-size">${details.floorSize || '-'}</p>
                 <div class="room-card-pricing">
                     <div class="room-card-price-row">
                         <span class="label">家賃</span>
-                        <span class="value">${room.rent?.toLocaleString() || '-'}円</span>
+                        <span class="value">${rent.toLocaleString()}円</span>
                     </div>
                     <div class="room-card-price-row">
                         <span class="label">共益費</span>
-                        <span class="value">${room.utilities?.toLocaleString() || '-'}円</span>
+                        <span class="value">${utilities.toLocaleString()}円</span>
                     </div>
                     <div class="room-card-price-row total">
                         <span class="label">月額合計</span>
                         <span class="value">${monthlyTotal.toLocaleString()}円</span>
                     </div>
-                    ${room.deposit ? `
+                    ${details.deposit ? `
                     <div class="room-card-price-row">
                         <span class="label">保証金</span>
-                        <span class="value">${room.deposit.toLocaleString()}円</span>
+                        <span class="value">${details.deposit.toLocaleString()}円</span>
                     </div>
                     ` : ''}
                 </div>
-                ${room.furniture ? `
+                ${details.furniture ? `
                 <div class="room-card-furniture">
-                    <strong>備品:</strong> ${room.furniture}
+                    <strong>備品:</strong> ${details.furniture}
                 </div>
                 ` : ''}
             </div>
