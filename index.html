@@ -261,161 +261,81 @@
         </div>
     </section>
 
-    <!-- 間取り・写真ギャラリー -->
+    <!-- 間取り -->
     <section class="section" id="gallery">
         <div class="container">
-            <h2 class="section-title">間取り・写真</h2>
-            <div class="gallery-content">
-                <div class="floorplan">
-                    <h3 class="subsection-title">間取り図</h3>
-                    <!-- 【要差し替え】間取り図を配置してください -->
-                    <img src="images/floorplan.jpg" alt="サウンドガーデン追浜 間取り図">
+            <h2 class="section-title">間取り</h2>
+            <div class="floorplan-container">
+                <!-- 【要差し替え】間取り図を配置してください -->
+                <img src="images/floorplan.jpg" alt="サウンドガーデン追浜 間取り図" class="floorplan-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- おすすめポイント -->
+    <section class="section section-gray" id="highlights">
+        <div class="container">
+            <h2 class="section-title">おすすめポイント</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <img src="images/living-01.jpg" alt="20畳のLDK" class="highlight-image">
+                    <h3 class="highlight-title">20畳のLDK</h3>
+                    <p class="highlight-text">広々としたリビング・ダイニング・キッチンで快適な共同生活</p>
                 </div>
-                <div class="photo-gallery">
-                    <h3 class="subsection-title">写真ギャラリー</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-item" data-image="images/living-01.jpg">
-                            <img src="images/living-01.jpg" alt="20畳のLDK">
-                            <p class="gallery-caption">20畳のLDK</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/kitchen-01.jpg">
-                            <img src="images/kitchen-01.jpg" alt="LIXIL製キッチン">
-                            <p class="gallery-caption">幅255cmのLIXIL製キッチン</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/room-01.jpg">
-                            <img src="images/room-01.jpg" alt="個室（202号室）">
-                            <p class="gallery-caption">個室（202号室）</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/room-02.jpg">
-                            <img src="images/room-02.jpg" alt="個室（203号室）">
-                            <p class="gallery-caption">個室（203号室）</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/bathroom-01.jpg">
-                            <img src="images/bathroom-01.jpg" alt="浴室">
-                            <p class="gallery-caption">浴室</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/exterior-01.jpg">
-                            <img src="images/exterior-01.jpg" alt="外観">
-                            <p class="gallery-caption">外観</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/view-01.jpg">
-                            <img src="images/view-01.jpg" alt="富士山を望む眺望">
-                            <p class="gallery-caption">富士山を望む眺望</p>
-                        </div>
-                        <div class="gallery-item" data-image="images/entrance-01.jpg">
-                            <img src="images/entrance-01.jpg" alt="エントランス">
-                            <p class="gallery-caption">エントランス</p>
-                        </div>
-                    </div>
+                <div class="highlight-card">
+                    <img src="images/view-01.jpg" alt="富士山を望む高台" class="highlight-image">
+                    <h3 class="highlight-title">富士山を望む高台</h3>
+                    <p class="highlight-text">自然豊かな高台に位置し、富士山を望む素晴らしい眺望</p>
+                </div>
+                <div class="highlight-card">
+                    <img src="images/kitchen-01.jpg" alt="ワイドに使える新品キッチン" class="highlight-image">
+                    <h3 class="highlight-title">ワイドに使える新品キッチン</h3>
+                    <p class="highlight-text">幅255cmのLIXIL製キッチンで料理も楽しい</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- モーダル -->
-    <div class="modal" id="imageModal">
-        <button class="modal-close" id="modalClose">&times;</button>
-        <div class="modal-content">
-            <img src="" alt="拡大画像" id="modalImage">
-        </div>
-    </div>
-
-    <!-- おすすめポイント -->
-    <section class="section" id="highlights">
+    <!-- 共用設備 -->
+    <section class="section" id="facilities">
         <div class="container">
-            <h2 class="section-title">おすすめポイント</h2>
-            <ul class="highlights-list">
-                <li class="highlight-item">
-                    <div class="highlight-icon">🎵</div>
-                    <div class="highlight-content">
-                        <h3>楽器演奏可能</h3>
-                        <p>音楽を愛する方のために、楽器演奏が可能な環境を整えています。音楽仲間との出会いも楽しめます。</p>
-                    </div>
-                </li>
-                <li class="highlight-item">
-                    <div class="highlight-icon">🏔️</div>
-                    <div class="highlight-content">
-                        <h3>富士山を望む高台</h3>
-                        <p>自然豊かな高台に位置し、富士山を望む素晴らしい眺望をお楽しみいただけます。</p>
-                    </div>
-                </li>
-                <li class="highlight-item">
-                    <div class="highlight-icon">🏠</div>
-                    <div class="highlight-content">
-                        <h3>広々とした共用スペース</h3>
-                        <p>20畳の広々としたLDKで、入居者同士のコミュニケーションも快適です。</p>
-                    </div>
-                </li>
-                <li class="highlight-item">
-                    <div class="highlight-icon">🍳</div>
-                    <div class="highlight-content">
-                        <h3>充実のキッチン設備</h3>
-                        <p>幅255cmのLIXIL製キッチンを完備。料理好きの方も満足いただける広さです。</p>
-                    </div>
-                </li>
-                <li class="highlight-item">
-                    <div class="highlight-icon">💰</div>
-                    <div class="highlight-content">
-                        <h3>初期費用<span class="text-free">無料</span>キャンペーン</h3>
-                        <p>保証料3万円が<span class="text-free">無料</span>！初期費用を抑えて入居できます。</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- 設備・条件 -->
-    <section class="section section-gray" id="facilities">
-        <div class="container">
-            <h2 class="section-title">設備・条件</h2>
+            <h2 class="section-title">共用設備</h2>
             <div class="facilities-grid">
                 <div class="facility-item">
-                    <div class="facility-icon">🎸</div>
-                    <p class="facility-label">楽器演奏可</p>
+                    <img src="images/living-01.jpg" alt="リビング" class="facility-image">
+                    <h3 class="facility-name">リビング</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">🛋️</div>
-                    <p class="facility-label">リビング</p>
+                    <img src="images/living-01.jpg" alt="ダイニング" class="facility-image">
+                    <h3 class="facility-name">ダイニング</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">🍴</div>
-                    <p class="facility-label">ダイニング</p>
+                    <img src="images/kitchen-01.jpg" alt="キッチン" class="facility-image">
+                    <h3 class="facility-name">キッチン</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">🍳</div>
-                    <p class="facility-label">キッチン</p>
+                    <img src="images/bathroom-01.jpg" alt="浴室" class="facility-image">
+                    <h3 class="facility-name">浴室</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">🛁</div>
-                    <p class="facility-label">浴室</p>
+                    <img src="images/room-placeholder.jpg" alt="トイレ" class="facility-image">
+                    <h3 class="facility-name">トイレ</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">🚽</div>
-                    <p class="facility-label">トイレ</p>
+                    <img src="images/room-placeholder.jpg" alt="洗濯機・乾燥機" class="facility-image">
+                    <h3 class="facility-name">洗濯機・乾燥機</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">👕</div>
-                    <p class="facility-label">洗濯機</p>
+                    <img src="images/room-placeholder.jpg" alt="インターネット" class="facility-image">
+                    <h3 class="facility-name">インターネット</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">💨</div>
-                    <p class="facility-label">乾燥機</p>
+                    <img src="images/floorplan.jpg" alt="間取り図" class="facility-image">
+                    <h3 class="facility-name">間取り図</h3>
                 </div>
                 <div class="facility-item">
-                    <div class="facility-icon">📶</div>
-                    <p class="facility-label">インターネット完備</p>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">👨</div>
-                    <p class="facility-label">男性OK</p>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">👩</div>
-                    <p class="facility-label">女性OK</p>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">🌍</div>
-                    <p class="facility-label">外国人OK</p>
+                    <img src="images/room-placeholder.jpg" alt="洗面台" class="facility-image">
+                    <h3 class="facility-name">洗面台</h3>
                 </div>
             </div>
         </div>

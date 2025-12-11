@@ -658,10 +658,16 @@ a:hover {
     box-shadow: var(--shadow-md);
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* 間取り図 */
+.floorplan-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.floorplan-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
 }
 
 /* ========================================
@@ -854,76 +860,81 @@ a:hover {
    おすすめポイント
    ======================================== */
 
-.highlights-list {
-    list-style: none;
+.highlights-grid {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-.highlight-item {
-    display: flex;
-    gap: 25px;
-    padding: 30px;
+.highlight-card {
     background-color: var(--bg-white);
-    border-radius: 12px;
+    border-radius: 8px;
+    overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
 }
 
-.highlight-item:hover {
+.highlight-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
-.highlight-icon {
-    font-size: 3rem;
-    flex-shrink: 0;
+.highlight-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
 
-.highlight-content h3 {
-    font-size: 1.3rem;
+.highlight-title {
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    padding: 20px 20px 10px;
+    text-align: center;
     color: var(--text-color);
 }
 
-.highlight-content p {
+.highlight-text {
+    padding: 0 20px 20px;
+    text-align: center;
     color: var(--text-light);
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 /* ========================================
-   設備・条件
+   共用設備
    ======================================== */
 
 .facilities-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
 .facility-item {
     background-color: var(--bg-white);
-    padding: 30px 20px;
     border-radius: 8px;
+    overflow: hidden;
     box-shadow: var(--shadow-sm);
-    text-align: center;
     transition: all 0.3s ease;
 }
 
 .facility-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
 
-.facility-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+.facility-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
 
-.facility-label {
-    font-size: 0.95rem;
+.facility-name {
+    font-size: 1rem;
     font-weight: 500;
+    padding: 15px;
+    text-align: center;
     color: var(--text-color);
 }
 
@@ -1275,12 +1286,14 @@ a:hover {
         padding: 6px 14px;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .facilities-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 
     .rooms-grid {
@@ -1440,7 +1453,11 @@ a:hover {
     }
 
     .campaign-badge {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .campaign-text {
+        font-size: 0.8rem;
     }
 
     .hero-info {
@@ -1492,37 +1509,38 @@ a:hover {
     }
 
     /* おすすめポイント */
-    .highlight-item {
-        flex-direction: column;
-        padding: 25px;
-        gap: 15px;
-        text-align: center;
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .highlight-icon {
-        font-size: 2.5rem;
+    .highlight-image {
+        height: 200px;
     }
 
-    .highlight-content h3 {
-        font-size: 1.2rem;
+    .highlight-title {
+        font-size: 1.1rem;
+        padding: 15px 15px 10px;
     }
 
-    /* 設備・条件 */
+    .highlight-text {
+        font-size: 0.9rem;
+        padding: 0 15px 15px;
+    }
+
+    /* 共用設備 */
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
-    .facility-item {
-        padding: 25px 15px;
+    .facility-image {
+        height: 150px;
     }
 
-    .facility-icon {
-        font-size: 2rem;
-    }
-
-    .facility-label {
+    .facility-name {
         font-size: 0.9rem;
+        padding: 12px;
     }
 
     /* 入居可能な部屋 */
@@ -1657,7 +1675,11 @@ a:hover {
         font-size: 1rem;
     }
 
-    .gallery-grid {
+    .highlights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facilities-grid {
         grid-template-columns: 1fr;
     }
 

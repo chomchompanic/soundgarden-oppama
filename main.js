@@ -21,52 +21,6 @@ navLinks.forEach(link => {
 });
 
 // ========================================
-// 写真ギャラリー - モーダル表示
-// ========================================
-
-const galleryItems = document.querySelectorAll('.gallery-item');
-const imageModal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
-const modalClose = document.getElementById('modalClose');
-
-// ギャラリー画像をクリックしたらモーダル表示
-galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const imageSrc = item.dataset.image;
-        const imageAlt = item.querySelector('img').alt;
-
-        modalImage.src = imageSrc;
-        modalImage.alt = imageAlt;
-        imageModal.classList.add('active');
-
-        // スクロールを無効化
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-// モーダルを閉じる
-const closeModal = () => {
-    imageModal.classList.remove('active');
-    document.body.style.overflow = '';
-};
-
-modalClose.addEventListener('click', closeModal);
-
-// モーダルの背景をクリックしても閉じる
-imageModal.addEventListener('click', (e) => {
-    if (e.target === imageModal) {
-        closeModal();
-    }
-});
-
-// ESCキーでモーダルを閉じる
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && imageModal.classList.contains('active')) {
-        closeModal();
-    }
-});
-
-// ========================================
 // お問い合わせフォーム - バリデーション
 // ========================================
 
@@ -291,6 +245,40 @@ updateHeroCarousel = () => {
     originalUpdateCarousel();
     updateThumbnails();
 };
+
+// ========================================
+// 物件概要テキストの2行目インデント調整
+// ========================================
+
+const adjustOverviewTextIndent = () => {
+    const overviewText = document.querySelector('.overview-description p strong');
+    if (!overviewText) return;
+
+    const originalText = '🎵自然豊かな環境の中、周りを気にすることなく楽器演奏可能🎵';
+
+    // 一旦元のテキストに戻す
+    overviewText.textContent = originalText;
+
+    // 要素の高さをチェック（1行か2行か判定）
+    const lineHeight = parseFloat(window.getComputedStyle(overviewText).lineHeight);
+    const actualHeight = overviewText.offsetHeight;
+
+    // 2行以上の場合（高さが1.5倍以上）
+    if (actualHeight > lineHeight * 1.5) {
+        // テキストを分割して2行目に全角スペースを追加
+        overviewText.innerHTML = '🎵自然豊かな環境の中、<br>　周りを気にすることなく楽器演奏可能🎵';
+    }
+};
+
+// 初回実行
+adjustOverviewTextIndent();
+
+// ウィンドウリサイズ時に再調整
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(adjustOverviewTextIndent, 100);
+});
 
 // ========================================
 // 部屋フィルター機能
