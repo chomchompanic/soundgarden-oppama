@@ -82,7 +82,7 @@ const isValidEmail = (email) => {
 };
 
 // フォーム送信処理
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // フォーム要素の取得
@@ -108,12 +108,28 @@ contactForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // バリデーション成功 - 送信完了モーダルを表示
-    successModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // フォームデータを送信
+    try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
-    // フォームをリセット
-    contactForm.reset();
+        if (response.ok) {
+            // 送信成功 - モーダルを表示
+            successModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            contactForm.reset();
+        } else {
+            alert('送信に失敗しました。もう一度お試しください。');
+        }
+    } catch (error) {
+        alert('送信中にエラーが発生しました。もう一度お試しください。');
+    }
 });
 
 // 送信完了モーダルを閉じる
