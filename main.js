@@ -29,6 +29,36 @@ const successModal = document.getElementById('successModal');
 const successModalClose = document.getElementById('successModalClose');
 const successModalButton = document.getElementById('successModalButton');
 
+// カスタムバリデーションメッセージの設定
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+
+nameInput.addEventListener('invalid', () => {
+    if (nameInput.validity.valueMissing) {
+        nameInput.setCustomValidity('お名前を入力してください');
+    } else {
+        nameInput.setCustomValidity('');
+    }
+});
+
+nameInput.addEventListener('input', () => {
+    nameInput.setCustomValidity('');
+});
+
+emailInput.addEventListener('invalid', () => {
+    if (emailInput.validity.valueMissing) {
+        emailInput.setCustomValidity('メールアドレスを入力してください');
+    } else if (emailInput.validity.typeMismatch) {
+        emailInput.setCustomValidity('正しいメールアドレスの形式で入力してください');
+    } else {
+        emailInput.setCustomValidity('');
+    }
+});
+
+emailInput.addEventListener('input', () => {
+    emailInput.setCustomValidity('');
+});
+
 // メールアドレスの形式チェック
 const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -40,27 +70,25 @@ contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // フォーム要素の取得
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
 
     // バリデーション
     if (!name) {
-        alert('お名前を入力してください');
-        nameInput.focus();
+        alert('お名前を入力してください。');
+        document.getElementById('name').focus();
         return;
     }
 
     if (!email) {
-        alert('メールアドレスを入力してください');
-        emailInput.focus();
+        alert('メールアドレスを入力してください。');
+        document.getElementById('email').focus();
         return;
     }
 
     if (!isValidEmail(email)) {
-        alert('正しいメールアドレスの形式で入力してください');
-        emailInput.focus();
+        alert('正しいメールアドレスの形式で入力してください。');
+        document.getElementById('email').focus();
         return;
     }
 
