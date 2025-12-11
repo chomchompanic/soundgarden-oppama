@@ -1376,6 +1376,14 @@ a:hover {
         aspect-ratio: 10 / 7;
     }
 
+    .hero-thumbnails {
+        gap: 6px;
+        justify-content: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .hero-carousel-arrow {
         width: 45px;
         height: 45px;
