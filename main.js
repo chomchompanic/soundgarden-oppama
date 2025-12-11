@@ -254,6 +254,34 @@ prevHeroRoomBtn.addEventListener('click', () => {
     updateHeroCarousel();
 });
 
+// サムネイルクリック
+const thumbnails = document.querySelectorAll('.hero-thumbnail');
+thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+        currentHeroRoomIndex = index;
+        updateHeroCarousel();
+        updateThumbnails();
+    });
+});
+
+// サムネイルのアクティブ状態を更新
+const updateThumbnails = () => {
+    thumbnails.forEach((thumbnail, index) => {
+        if (index === currentHeroRoomIndex) {
+            thumbnail.classList.add('active');
+        } else {
+            thumbnail.classList.remove('active');
+        }
+    });
+};
+
+// カルーセル更新時にサムネイルも更新
+const originalUpdateCarousel = updateHeroCarousel;
+updateHeroCarousel = () => {
+    originalUpdateCarousel();
+    updateThumbnails();
+};
+
 // ========================================
 // 部屋フィルター機能
 // ========================================
