@@ -88,7 +88,6 @@ contactForm.addEventListener('submit', (e) => {
     // フォーム要素の取得
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
-    const privacy = document.getElementById('privacy').checked;
 
     // バリデーション
     if (!name) {
@@ -106,11 +105,6 @@ contactForm.addEventListener('submit', (e) => {
     if (!isValidEmail(email)) {
         alert('正しいメールアドレスの形式で入力してください。');
         document.getElementById('email').focus();
-        return;
-    }
-
-    if (!privacy) {
-        alert('個人情報の取り扱いに同意してください。');
         return;
     }
 
