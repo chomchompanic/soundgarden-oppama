@@ -1531,16 +1531,16 @@ a:hover {
     /* 共用設備 */
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 20px;
     }
 
     .facility-image {
-        height: 150px;
+        height: 160px;
     }
 
     .facility-name {
-        font-size: 0.9rem;
-        padding: 12px;
+        font-size: 0.95rem;
+        padding: 15px 10px;
     }
 
     /* 入居可能な部屋 */
@@ -1680,7 +1680,8 @@ a:hover {
     }
 
     .facilities-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     /* カルーセル（スマホ） */
