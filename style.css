@@ -1386,8 +1386,12 @@ a:hover {
     }
 
     .hero-thumbnails {
-        gap: 8px;
+        gap: 4px;
         max-width: 100%;
+    }
+
+    .hero-thumbnail {
+        aspect-ratio: 1 / 1;
     }
 
     .hero-carousel-arrow {
