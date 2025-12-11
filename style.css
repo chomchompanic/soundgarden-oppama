@@ -1377,11 +1377,8 @@ a:hover {
     }
 
     .hero-thumbnails {
-        gap: 6px;
-        justify-content: center;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        gap: 8px;
+        max-width: 100%;
     }
 
     .hero-carousel-arrow {
