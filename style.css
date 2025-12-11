@@ -341,28 +341,32 @@ a:hover {
 
 .hero-info {
     margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .info-row {
     display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.info-row:last-child {
-    border-bottom: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    text-align: center;
 }
 
 .info-label {
-    font-weight: 500;
-    color: var(--text-light);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
 }
 
 .info-value {
-    font-weight: 400;
-    color: var(--text-color);
-    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
     line-height: 1.5;
 }
 
@@ -1423,6 +1427,23 @@ a:hover {
 
     .campaign-badge {
         font-size: 0.9rem;
+    }
+
+    .hero-info {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .info-row {
+        padding: 12px;
+    }
+
+    .info-label {
+        font-size: 0.85rem;
+    }
+
+    .info-value {
+        font-size: 1rem;
     }
 
     .hero-buttons {
