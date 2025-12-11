@@ -32,7 +32,7 @@ const ROOM_DETAILS = {
         deposit: 30000,
         floorSize: '7.3㎡（4畳）',
         furniture: 'デスク、椅子',
-        image: 'images/room-03.jpg'
+        image: 'images/room-204.jpg'
     },
     '201号室': {
         rent: 29000,
@@ -40,7 +40,7 @@ const ROOM_DETAILS = {
         deposit: 30000,
         floorSize: '15.5㎡（8.5畳）',
         furniture: 'ベッド、デスク、椅子',
-        image: 'images/room-01.jpg'
+        image: 'images/room-placeholder.jpg'
     },
     '202号室': {
         rent: 29000,
@@ -48,7 +48,7 @@ const ROOM_DETAILS = {
         deposit: 30000,
         floorSize: '15.5㎡（8.5畳）',
         furniture: 'ベッド、デスク、椅子',
-        image: 'images/room-05.jpg'
+        image: 'images/room-202.jpg'
     },
     '203号室': {
         rent: 29000,
@@ -56,7 +56,7 @@ const ROOM_DETAILS = {
         deposit: 30000,
         floorSize: '16.4㎡（9畳）',
         furniture: 'ベッド、デスク、椅子',
-        image: 'images/room-02.jpg'
+        image: 'images/room-203.jpg'
     },
     '101号室': {
         rent: 27000,
@@ -64,7 +64,7 @@ const ROOM_DETAILS = {
         deposit: 30000,
         floorSize: '16.4㎡（9畳）',
         furniture: 'ベッド、デスク、椅子',
-        image: 'images/room-04.jpg'
+        image: 'images/room-101.jpg'
     }
 };
 
@@ -107,7 +107,6 @@ function createRoomCard(room) {
 
     const rent = details.rent || 0;
     const utilities = details.utilities || 0;
-    const monthlyTotal = rent + utilities;
     const imageUrl = details.image || 'images/room-placeholder.jpg';
 
     return `
@@ -126,10 +125,6 @@ function createRoomCard(room) {
                         <span class="label">共益費</span>
                         <span class="value">${utilities.toLocaleString()}円</span>
                     </div>
-                    <div class="room-card-price-row total">
-                        <span class="label">月額合計</span>
-                        <span class="value">${monthlyTotal.toLocaleString()}円</span>
-                    </div>
                     ${details.deposit ? `
                     <div class="room-card-price-row">
                         <span class="label">保証金</span>
@@ -139,7 +134,7 @@ function createRoomCard(room) {
                 </div>
                 ${details.furniture ? `
                 <div class="room-card-furniture">
-                    <strong>備品:</strong> ${details.furniture}
+                    <strong>備品 :</strong> ${details.furniture}
                 </div>
                 ` : ''}
             </div>
@@ -164,6 +159,19 @@ async function displayAvailableRooms() {
     // データ取得
     const allRooms = await fetchRooms();
     const availableRooms = filterAvailableRooms(allRooms);
+
+    // 部屋番号順にソート（201, 202, 203, 204, 101の順）
+    const roomOrder = ['201号室', '202号室', '203号室', '204号室', '101号室'];
+    availableRooms.sort((a, b) => {
+        const indexA = roomOrder.indexOf(a.roomNumber);
+        const indexB = roomOrder.indexOf(b.roomNumber);
+
+        // roomOrderに含まれる部屋は指定順、含まれない部屋は後ろ
+        if (indexA === -1 && indexB === -1) return 0;
+        if (indexA === -1) return 1;
+        if (indexB === -1) return -1;
+        return indexA - indexB;
+    });
 
     // 空室がない場合
     if (availableRooms.length === 0) {
