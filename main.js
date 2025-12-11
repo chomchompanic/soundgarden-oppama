@@ -196,23 +196,23 @@ window.addEventListener('scroll', () => {
 
 const heroRoomImages = [
     {
-        src: 'images/room-01.jpg',
+        src: 'images/room-2f-se.jpg',
         caption: '二階洋室（南東）'
     },
     {
-        src: 'images/room-02.jpg',
+        src: 'images/room-2f-nw-1.jpg',
         caption: '二階洋室（北西）'
     },
     {
-        src: 'images/room-03.jpg',
+        src: 'images/room-2f-nw-2.jpg',
         caption: '二階洋室（北西）'
     },
     {
-        src: 'images/room-04.jpg',
+        src: 'images/room-2f-sw.jpg',
         caption: '二階洋室（南西）'
     },
     {
-        src: 'images/room-05.jpg',
+        src: 'images/room-1f-se.jpg',
         caption: '一階洋室（南東）'
     }
 ];
