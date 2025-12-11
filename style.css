@@ -926,7 +926,7 @@ a:hover {
 
 .facility-image {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1280 / 896;
     object-fit: cover;
 }
 
@@ -1532,10 +1532,6 @@ a:hover {
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-    }
-
-    .facility-image {
-        height: 160px;
     }
 
     .facility-name {
