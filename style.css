@@ -1424,6 +1424,10 @@ a:hover {
         font-size: 1.6rem;
     }
 
+    .campaign-badge {
+        font-size: 0.9rem;
+    }
+
     .hero-buttons {
         gap: 12px;
     }
