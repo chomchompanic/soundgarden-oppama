@@ -12,8 +12,8 @@
     /* カラー設定 */
     --primary-color: #2563eb;
     --primary-dark: #1e40af;
-    --accent-color: #f97316;
-    --accent-light: #fed7aa;
+    --accent-color: #3b82f6;
+    --accent-light: #bfdbfe;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-white: #ffffff;
@@ -273,7 +273,7 @@ a:hover {
 
 .hero-thumbnail.active {
     border-color: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .hero-carousel-arrow {
