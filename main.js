@@ -40,25 +40,27 @@ contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // フォーム要素の取得
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
 
     // バリデーション
     if (!name) {
-        alert('お名前を入力してください。');
-        document.getElementById('name').focus();
+        alert('お名前を入力してください');
+        nameInput.focus();
         return;
     }
 
     if (!email) {
-        alert('メールアドレスを入力してください。');
-        document.getElementById('email').focus();
+        alert('メールアドレスを入力してください');
+        emailInput.focus();
         return;
     }
 
     if (!isValidEmail(email)) {
-        alert('正しいメールアドレスの形式で入力してください。');
-        document.getElementById('email').focus();
+        alert('正しいメールアドレスの形式で入力してください');
+        emailInput.focus();
         return;
     }
 
