@@ -172,7 +172,17 @@ a:hover {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: stretch;
+}
+
+.hero-image {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-card {
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-image img {
@@ -228,16 +238,15 @@ a:hover {
 
 /* サムネイル */
 .hero-thumbnails {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
     margin-top: 16px;
-    overflow-x: auto;
 }
 
 .hero-thumbnail {
-    flex-shrink: 0;
-    width: 100px;
-    height: 70px;
+    width: 100%;
+    aspect-ratio: 10 / 7;
     border: 3px solid transparent;
     border-radius: 8px;
     overflow: hidden;
