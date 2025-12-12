@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://soundgarden-oppama.vercel.app/sitemap.xml
