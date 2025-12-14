@@ -972,6 +972,35 @@ a:hover {
     pointer-events: none;
 }
 
+/* 駅からの道のり動画 */
+.access-video {
+    margin-top: 50px;
+}
+
+.access-video-description {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 .nearby-list {
     list-style: none;
     display: grid;
@@ -1090,6 +1119,7 @@ a:hover {
 }
 
 .required {
+    display: inline-block;
     color: #dc2626;
     font-size: 0.85rem;
     font-weight: 600;
@@ -1097,7 +1127,8 @@ a:hover {
     padding: 2px 8px;
     border-radius: 4px;
     margin-left: 8px;
-    vertical-align: middle;
+    vertical-align: text-top;
+    line-height: 1;
 }
 
 .optional {
