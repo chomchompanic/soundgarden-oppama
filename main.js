@@ -159,21 +159,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const duration = 1000; // スクロール時間（ミリ秒）1000ms = 1秒
             let start = null;
 
-            // イージング関数（easeInOutQuad - より滑らかで均一な速度）
-            const easeInOutQuad = (t) => {
-                return t < 0.5
-                    ? 2 * t * t
-                    : 1 - Math.pow(-2 * t + 2, 2) / 2;
-            };
-
-            // アニメーション関数
+            // アニメーション関数（リニア - 完全に一定速度）
             const animation = (currentTime) => {
                 if (start === null) start = currentTime;
                 const timeElapsed = currentTime - start;
                 const progress = Math.min(timeElapsed / duration, 1);
-                const ease = easeInOutQuad(progress);
 
-                window.scrollTo(0, startPosition + distance * ease);
+                // イージングなし、完全に一定速度でスクロール
+                window.scrollTo(0, startPosition + distance * progress);
 
                 if (timeElapsed < duration) {
                     requestAnimationFrame(animation);
