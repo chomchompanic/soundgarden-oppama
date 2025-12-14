@@ -154,27 +154,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             // ヘッダーの高さ分オフセット
             const headerHeight = document.querySelector('.header').offsetHeight;
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
 
-            // スクロール速度（ピクセル/フレーム）- 小さいほど遅い
-            const speed = 15;
-            const totalFrames = Math.abs(Math.ceil(distance / speed));
-            let currentFrame = 0;
+            // 1フレームあたりのスクロール量（ピクセル）- 小さいほど遅い
+            const pixelsPerFrame = 10;
 
             const scrollStep = () => {
-                currentFrame++;
-                const progress = currentFrame / totalFrames;
-                const currentPosition = startPosition + (distance * progress);
+                const currentPosition = window.pageYOffset;
+                const remaining = targetPosition - currentPosition;
 
-                window.scrollTo(0, currentPosition);
-
-                if (currentFrame < totalFrames) {
-                    requestAnimationFrame(scrollStep);
-                } else {
-                    // 最後に正確な位置に移動
+                // 目標位置に近づいたら完了
+                if (Math.abs(remaining) < pixelsPerFrame) {
                     window.scrollTo(0, targetPosition);
+                    return;
                 }
+
+                // 固定ピクセル数だけスクロール
+                const step = remaining > 0 ? pixelsPerFrame : -pixelsPerFrame;
+                window.scrollTo(0, currentPosition + step);
+
+                requestAnimationFrame(scrollStep);
             };
 
             requestAnimationFrame(scrollStep);
