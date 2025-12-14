@@ -133,7 +133,7 @@ successModal.addEventListener('click', (e) => {
 });
 
 // ========================================
-// スムーススクロール（速度調整可能版）
+// スムーススクロール
 // ========================================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -155,28 +155,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const headerHeight = document.querySelector('.header').offsetHeight;
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
-            // スクロール速度（ミリ秒）- 大きいほど遅い
-            const duration = 1200;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
-
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-
-                // リニア（一定速度）
-                window.scrollTo(0, startPosition + distance * progress);
-
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                } else {
-                    window.scrollTo(0, targetPosition);
-                }
-            }
-
-            requestAnimationFrame(animation);
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     });
 });
