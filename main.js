@@ -156,14 +156,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const targetPosition = target.offsetTop - headerHeight - 20;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 800; // スクロール時間（ミリ秒）800ms = 0.8秒
+            const duration = 1000; // スクロール時間（ミリ秒）1000ms = 1秒
             let start = null;
 
-            // イージング関数（easeInOutCubic）
-            const easeInOutCubic = (t) => {
+            // イージング関数（easeInOutQuad - より滑らかで均一な速度）
+            const easeInOutQuad = (t) => {
                 return t < 0.5
-                    ? 4 * t * t * t
-                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    ? 2 * t * t
+                    : 1 - Math.pow(-2 * t + 2, 2) / 2;
             };
 
             // アニメーション関数
@@ -171,7 +171,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 if (start === null) start = currentTime;
                 const timeElapsed = currentTime - start;
                 const progress = Math.min(timeElapsed / duration, 1);
-                const ease = easeInOutCubic(progress);
+                const ease = easeInOutQuad(progress);
 
                 window.scrollTo(0, startPosition + distance * ease);
 
