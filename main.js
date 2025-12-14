@@ -133,7 +133,7 @@ successModal.addEventListener('click', (e) => {
 });
 
 // ========================================
-// スムーススクロール（完全に一定速度）
+// スムーススクロール
 // ========================================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -155,27 +155,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const headerHeight = document.querySelector('.header').offsetHeight;
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
-            // 1フレームあたりのスクロール量（ピクセル）- 小さいほど遅い
-            const pixelsPerFrame = 10;
-
-            const scrollStep = () => {
-                const currentPosition = window.pageYOffset;
-                const remaining = targetPosition - currentPosition;
-
-                // 目標位置に近づいたら完了
-                if (Math.abs(remaining) < pixelsPerFrame) {
-                    window.scrollTo(0, targetPosition);
-                    return;
-                }
-
-                // 固定ピクセル数だけスクロール
-                const step = remaining > 0 ? pixelsPerFrame : -pixelsPerFrame;
-                window.scrollTo(0, currentPosition + step);
-
-                requestAnimationFrame(scrollStep);
-            };
-
-            requestAnimationFrame(scrollStep);
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     });
 });
