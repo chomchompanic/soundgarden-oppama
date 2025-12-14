@@ -1097,6 +1097,7 @@ a:hover {
     padding: 2px 8px;
     border-radius: 4px;
     margin-left: 8px;
+    vertical-align: middle;
 }
 
 .optional {
