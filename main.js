@@ -133,11 +133,10 @@ successModal.addEventListener('click', (e) => {
 });
 
 // ========================================
-// スムーススクロール（古いブラウザ対応）
+// スムーススクロール（カスタム速度対応）
 // ========================================
 
-// 一部の古いブラウザではCSSのscroll-behavior: smoothが効かないため
-// JavaScriptでもスムーススクロールを実装
+// スムーススクロールを実装（速度をゆっくりめに調整）
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -155,11 +154,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
             const headerHeight = document.querySelector('.header').offsetHeight;
             const targetPosition = target.offsetTop - headerHeight - 20;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800; // スクロール時間（ミリ秒）800ms = 0.8秒
+            let start = null;
 
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            // イージング関数（easeInOutCubic）
+            const easeInOutCubic = (t) => {
+                return t < 0.5
+                    ? 4 * t * t * t
+                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            };
+
+            // アニメーション関数
+            const animation = (currentTime) => {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const ease = easeInOutCubic(progress);
+
+                window.scrollTo(0, startPosition + distance * ease);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            };
+
+            requestAnimationFrame(animation);
         }
     });
 });
