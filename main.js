@@ -133,10 +133,9 @@ successModal.addEventListener('click', (e) => {
 });
 
 // ========================================
-// スムーススクロール（カスタム速度対応）
+// スムーススクロール（完全に一定速度）
 // ========================================
 
-// スムーススクロールを実装（速度をゆっくりめに調整）
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -152,28 +151,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             e.preventDefault();
 
+            // ヘッダーの高さ分オフセット
             const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight - 20;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 1000; // スクロール時間（ミリ秒）1000ms = 1秒
-            let start = null;
 
-            // アニメーション関数（リニア - 完全に一定速度）
-            const animation = (currentTime) => {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
-                const progress = Math.min(timeElapsed / duration, 1);
+            // スクロール速度（ピクセル/フレーム）- 小さいほど遅い
+            const speed = 15;
+            const totalFrames = Math.abs(Math.ceil(distance / speed));
+            let currentFrame = 0;
 
-                // イージングなし、完全に一定速度でスクロール
-                window.scrollTo(0, startPosition + distance * progress);
+            const scrollStep = () => {
+                currentFrame++;
+                const progress = currentFrame / totalFrames;
+                const currentPosition = startPosition + (distance * progress);
 
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
+                window.scrollTo(0, currentPosition);
+
+                if (currentFrame < totalFrames) {
+                    requestAnimationFrame(scrollStep);
+                } else {
+                    // 最後に正確な位置に移動
+                    window.scrollTo(0, targetPosition);
                 }
             };
 
-            requestAnimationFrame(animation);
+            requestAnimationFrame(scrollStep);
         }
     });
 });
